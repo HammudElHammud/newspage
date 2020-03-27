@@ -1,0 +1,220 @@
+{% extends 'front/master.html' %}
+{% load static %}
+
+ {% block mainblock%}
+
+	<div class="container p-t-4 p-b-35">
+		<h2 class="f1-l-1 cl2">
+			About Us
+		</h2>
+	</div>
+
+	<!-- Content -->
+	<section class="bg0 p-b-110">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-7 col-lg-8 p-b-30">
+					<div class="p-r-10 p-r-0-sr991">
+						<p class="f1-s-11 cl6 p-b-25">
+                               {{pageName.about | safe}}						</p>
+
+						<p class="f1-s-11 cl6 p-b-25">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet est vel orci luctus sollicitudin. Duis eleifend vestibulum justo, varius semper lacus condimentum dictum. Donec pulvinar a magna ut malesuada. In posuere felis diam, vel sodales metus accumsan in. Duis viverra dui eu pharetra pellentesque. Donec a eros leo. Quisque sed ligula vitae lorem efficitur faucibus. Praesent sit amet imperdiet ante. Nulla id tellus auctor, dictum libero a, malesuada nisi. Nulla in porta nibh, id vestibulum ipsum. Praesent dapibus tempus erat quis aliquet. Donec ac purus id sapien condimentum feugiat.
+						</p>
+
+						<p class="f1-s-11 cl6 p-b-25">
+							Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis, quis vulputate
+						</p>
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				<div class="col-md-5 col-lg-4 p-b-30">
+					<div class="p-l-10 p-rl-0-sr991 p-t-5">
+						<!-- Popular Posts -->
+						<div>
+							<div class="how2 how2-cl4 flex-s-c">
+								<h3 class="f1-m-2 cl3 tab01-title">
+									Popular Post
+								</h3>
+							</div>
+
+							<ul class="p-t-35">
+								{% for i in popNews%}
+								<li class="flex-wr-sb-s p-b-30">
+									<a href="{% url 'news_datile' pk=i.pk %}" class="size-w-10 wrap-pic-w hov1 trans-03">
+										<img src="{{i.picUrl}}" alt="IMG">
+									</a>
+
+									<div class="size-w-11">
+										<h6 class="p-b-4">
+											<a href="{% url 'news_datile' pk=i.pk %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+												{{i.short_txt}}
+											</a>
+										</h6>
+
+										<span class="cl8 txt-center p-b-24">
+											<a href="{% url 'news_datile' pk=i.pk %}" class="f1-s-6 cl8 hov-cl10 trans-03">
+												{{cat.name}}
+											</a>
+
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
+
+											<span class="f1-s-3">
+												{{i.date}}
+											</span>
+										</span>
+									</div>
+								</li>
+								{% endfor%}
+
+
+							</ul>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+
+    {% endblock %}
+{% block footerlock%}
+<footer>
+    <div class="bg2 p-t-40 p-b-25">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 p-b-20">
+                    <div class="size-h-3 flex-s-c">
+                        <a href="/home"><img src="{{pageName.picurl}}" alt="IMG">                        </a>
+                    </div>
+
+                    <div>
+                        <p class="f1-s-1 cl11 p-b-16">
+
+                        </p>
+
+                        <p class="f1-s-1 cl11 p-b-16">
+                            Any questions? Call us on {{pageName.pageTe}}
+                        </p>
+
+                        <div class="p-t-15">
+                            <a href="{% static 'front/#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                <span class="fab fa-facebook-f"></span>
+                            </a>
+
+                            <a href="{% static 'front/#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                <span class="fab fa-twitter"></span>
+                            </a>
+
+                            <a href="{% static 'front/#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                <span class="fab fa-pinterest-p"></span>
+                            </a>
+
+                            <a href="{% static 'front/#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                <span class="fab fa-vimeo-v"></span>
+                            </a>
+
+                            <a href="{% static 'front/#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                <span class="fab fa-youtube"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 p-b-20">
+                    <div class="size-h-3 flex-s-c">
+                        <h5 class="f1-m-7 cl0">
+                            Popular Posts
+                        </h5>
+                    </div>
+
+                    <ul>
+                        {% for i in popNews%}
+                        <li class="flex-wr-sb-s p-b-20">
+                            <a href="{% url 'news_datile' pk=i.pk %}" class="size-w-4 wrap-pic-w hov1 trans-03">
+                                <img src="{{i.picUrl}}" alt="IMG">
+                            </a>
+
+                            <div class="size-w-5">
+                                <h6 class="p-b-5">
+                                    <a href="{% url 'news_datile' pk=i.pk %}" class="f1-s-5 cl11 hov-cl10 trans-03">
+                                       {{i.short_txt}}
+                                    </a>
+                                </h6>
+
+                                <span class="f1-s-3 cl6">
+										{{i.date}}
+									</span>
+                            </div>
+                        </li>
+                        {% endfor%}
+
+
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 p-b-20">
+                    <div class="size-h-3 flex-s-c">
+                        <h5 class="f1-m-7 cl0">
+                            Category
+                        </h5>
+                    </div>
+
+                    <ul class="m-t--12">
+                        {% for i in cat %}
+                        {% if i.count != 0%}
+                        <li class="how-bor1 p-rl-5 p-tb-10">
+                            <a href="{% static 'front/#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                {{i.name}}( {{ i.count}})
+                            </a>
+                        </li>
+                        {% endif%}
+                        {% endfor%}
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg11">
+        <div class="container size-h-4 flex-c-c p-tb-15">
+				<span class="f1-s-1 cl0 txt-center">
+					Copyright © 2020
+
+					<a href="{% static 'front/#" class="f1-s-1 cl10 hov-link1"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+                                class="fa fa-heart" aria-hidden="true"></i> by <a
+                                href="{% static 'front/https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</span>
+        </div>
+    </div>
+</footer>
+<!-- Back to top -->
+<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<span class="fas fa-angle-up"></span>
+		</span>
+</div>
+
+<!-- Modal Video 01-->
+<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" data-dismiss="modal">
+        <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+
+        <div class="wrap-video-mo-01">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}
